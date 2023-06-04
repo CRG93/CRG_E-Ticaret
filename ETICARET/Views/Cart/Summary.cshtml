@@ -1,0 +1,24 @@
+﻿@using ETICARET.Models
+@model ETICARET.Models.Cart
+
+<style>
+    #cart {
+        color: lightgray;
+    }
+    #cart a{
+        color:lightgray;
+    }
+</style>
+
+<ul class="navbar-nav my-2 my-lg-0">
+    <li id="cart" class="nav-item">
+        <a href="/Cart/Index">
+            <i class="fa-solid fa-cart-plus"></i>
+            @if (Model.CartLines.Count != 0)
+            {
+                @Model.CartLines.Count
+            }
+        </a>
+    </li>
+</ul>
+

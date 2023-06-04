@@ -1,0 +1,25 @@
+﻿#write-review{
+    margin-left:-50px;
+}
+
+#product-price{
+    color:red;
+    font-size:28px;
+
+}
+
+.card-title{
+    font-weight:400;
+    height:50px;
+    font-size:16px;
+    color:#857ae8;
+    line-height:1.35em;
+}
+
+.product-price {
+    font-weight: 700;
+    color:#414141;
+    font-size:17px;
+}
+
+a{text-decoration:none}

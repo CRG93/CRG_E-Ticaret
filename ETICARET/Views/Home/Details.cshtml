@@ -1,0 +1,118 @@
+﻿@using ETICARET.Entity
+@model Product
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-6">
+        <img src="~/Content/images/@Model.Image" class="img-fluid rounded"/>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12">
+                <h1>@Model.Name #235672</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @if (Model.IsApproved)
+                {
+                    <span class="badge bg-primary">Stokta</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">Stokta Yok</span>
+                }
+
+                <span class="product-number">#235672</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="description">
+                    @Model.Description
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star-half-stroke"></i>
+                <span class="badge bg-success">53</span>
+            </div>
+            <div class="col-4" id="write-review">
+                <a href="#">Write a review</a>
+            </div>
+
+            <div class="col-4">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h4 id="product-price">$@Model.Price</h4>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    @Html.HiddenFor(i => i.Id)
+                <div class="row">
+                    <div class="col-3 form-outline">
+                        <input type="number" id="typeNumber" name="quantity" class="form-control" placeholder="Adet"/>
+                    </div>
+                    <div class="col-9">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            Sepete Ekle
+                        </button>
+                    </div>
+                </div>
+                   
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="bd-example">
+            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false" tabindex="-1">Profile</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false" tabindex="-1">Contact</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled="" tabindex="-1">Disabled</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade active show" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                    <p>This is some placeholder content the <strong>Home tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+                </div>
+                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                    <p>This is some placeholder content the <strong>Profile tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+                </div>
+                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                    <p>This is some placeholder content the <strong>Contact tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+                </div>
+                <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
+                    <p>This is some placeholder content the <strong>Disabled tab's</strong> associated content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

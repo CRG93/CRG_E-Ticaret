@@ -1,0 +1,120 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E TICARET</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/400e3a8131.js" crossorigin="anonymous"></script>
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
+        <div class="container">
+            @*<a class="navbar-brand" href="/home/index">ANASAYFA</a>*@
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/Home">Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/List">Ürün Listesi</a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Category/Index">Admin Kategori Paneli</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Product/Index">Admin Ürün Paneli</a>
+                        </li>
+                    }
+
+                </ul>
+                @Html.Action("Summary", "Cart")
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Account">@User.Identity.Name              <i class="fa-solid fa-user"></i>                          </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Account/Logout">Logout                             <i class="fa-solid fa-power-off"></i>           </a>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Account/Login">Login     <i class="fa-solid fa-user"></i>           </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Account/Register">Register                  <i class="fa-regular fa-user"></i>                     </a>
+                        </li>
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    <!-- Footer -->
+    <hr />
+    <footer class="text-center text-lg-start bg-white text-muted">
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3 text-secondary"></i>CRG-E-Ticaret-Platformu
+                        </h6>
+                        <p>
+                            Burada istediğiniz gibi ürün alım satımı yapabilirsiniz. Türkiye'nin en güvenilir satış platformuna HOŞGELDİNİZ !!
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Kategoriler
+                        </h6>
+                        @Html.Action("_FooterCtg")
+                    </div>
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">İLETİŞİM</h6>
+                        <p><i class="fas fa-home me-3 text-secondary"></i> İstanbul Şişli Mecidiyeköy Mah. Eski Osmanlı Sokak No: 41</p>
+                        <p>
+                            <i class="fas fa-envelope me-3 text-secondary"></i>
+                            s.seyfullah.crg@gmail.com
+                        </p>
+                        <p><i class="fas fa-phone me-3 text-secondary"></i> + 90 546 557 37 93</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+    </footer>
+    <!-- Footer -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>

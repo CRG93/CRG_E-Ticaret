@@ -1,0 +1,52 @@
+﻿@using ETICARET.Models
+@model List<ProductModel>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-4">
+            <div class="card h-100">
+                <img src="~/Content/images/@item.Image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"> <a href="/Home/Details/@item.Id"> @item.Name</a></h5>
+                    <p class="card-text">
+                        @item.Description
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted product-price">
+                        <i class="fa-solid fa-turkish-lira-sign"></i>
+                        @item.Price
+                    </small>  
+                    <a href="/Cart/AddToCart/@item.Id" class="btn btn-primary btn-sm float-end">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Sepete Ekle
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+<!-- #region FOR COUNT -->
+@*@for (int i = 0; i < Model.Count; i++)
+     {
+     <div class="col">
+         <div class="card h-100">
+             <img src="~/Content/images/@Model[i].Image" class="card-img-top" alt="...">
+             <div class="card-body">
+                 <h5 class="card-title">@Model[i].Name</h5>
+                 <p class="card-text">@Model[i].Description</p>
+             </div>
+             <div class="card-footer">
+                 <small class="text-body-secondary">Last updated 3 mins ago</small>
+             </div>
+         </div>
+     </div>
+    }*@
+<!-- #endregion -->
+

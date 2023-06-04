@@ -1,0 +1,44 @@
+﻿@using ETICARET.Models
+@model List<ETICARET.Entity.Category>
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+<div style="color:none">
+    @foreach (var item in Model)
+    {
+        if (selectedCategory != null)
+        {
+            if (item.Id == int.Parse(selectedCategory.ToString()))
+            {
+                <p>
+                    <a href="/Home/list/@item.Id" class="text-reset">
+
+                        @item.Name
+                    </a>
+                </p>
+
+            }
+            else
+            {
+                <p>
+                    <a href="/Home/list/@item.Id" class="text-reset">
+
+                        @item.Name
+                    </a>
+                </p>
+            }
+
+        }
+        else
+        {
+            <p>
+                <a href="/Home/list/@item.Id" class="text-reset">
+
+                    @item.Name
+                </a>
+            </p>
+        }
+    }
+
+</div>
+

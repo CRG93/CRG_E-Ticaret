@@ -1,0 +1,48 @@
+﻿@model List<ETICARET.Entity.Category>
+
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"]; //localhost:4545\controller\action\id
+}
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <a href="/Home/list">
+            <i class="fa-solid fa-angles-right"></i>
+            Tüm Ürünler
+        </a>
+    </li>
+    @foreach (var item in Model)
+    {
+        if (selectedCategory != null)
+        {
+            if (item.Id == int.Parse(selectedCategory.ToString()))
+            {
+                <li class="list-group-item active" aria-current="true">
+                    <a href="/Home/list/@item.Id" class="list-group-item active">
+                        <i class="fa-solid fa-angles-right"></i>
+                        @item.Name
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="list-group-item">
+                    <a href="/Home/list/@item.Id">
+                        <i class="fa-solid fa-angles-right"></i>
+                        @item.Name
+                    </a>
+                </li>
+            }
+        }
+        else
+        {
+            <li class="list-group-item">
+                <a href="/Home/list/@item.Id">
+                    <i class="fa-solid fa-angles-right"></i>
+                    @item.Name
+                </a>
+            </li>
+        }
+    }
+
+</ul>
